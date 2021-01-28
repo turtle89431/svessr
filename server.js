@@ -8,6 +8,11 @@ server.set('views', './views')
 server.set("view engine", 'sve')
 server.use(express.static(path.join(__dirname, "public")));
 
+server.get("/api", function(req, res) {
+    res.json({ api: "example" })
+})
+
+/** Make * route last */
 server.get("*", function(req, res) {
     res.render('main', { title: "shit", sprops: "from Server 2", url: req.url, title: "My Page 2" })
 });
